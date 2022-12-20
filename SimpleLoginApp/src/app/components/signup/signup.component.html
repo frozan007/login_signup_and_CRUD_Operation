@@ -1,0 +1,112 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form #signUpForm="ngForm"> 
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input type="text" placeholder="Username" id="userName" name="userName" [(ngModel)]="signUpModel.userName" required>
+                                </div>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input type="text" placeholder="First Name" id="firstName" name="firstName" [(ngModel)]="signUpModel.firstName" required>
+                                </div>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input type="text" placeholder="Last Name" id="lastName" name="lastName" [(ngModel)]="signUpModel.lastName" required>
+                                </div>
+                            </div>
+                
+                            <!--DOB-->
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-calendar p-2"></span>
+                                    <label class="text-secondary">Date Of Birth:</label>
+                                    <input type="date" placeholder="Date Of Birth" id="dob" name="dateOfBirth" class="dateOfBirth" [(ngModel)]="signUpModel.dateOfBirth" required>
+                                </div>
+                            </div><br>
+
+                            <!--Gender-->
+
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="col">
+                                        <label>Gender:</label>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-check-input" type="radio" name="Gender" id="male" [(ngModel)]="signUpModel.gender" [value]="1">
+                                        <label class="form-check-label" for="Male">Male</label>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-check-input" type="radio" name="Gender" id="female" [(ngModel)]="signUpModel.gender" [value]="2">
+                                        <label class="form-check-label" for="female">Female</label>
+                                    </div>
+                                </div>
+                              </div>
+                              
+
+                              <!-- <div class="radio-field">
+                                <div class="btn-group">
+                                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked />
+                                    <label class="btn btn-secondary" for="option1">Select:</label>
+                                  
+                                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" />
+                                    <label class="btn btn-secondary" for="option2">Male</label>
+                                  
+                                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" />
+                                    <label class="btn btn-secondary" for="option3">Female</label>
+                                  </div>
+                              </div> -->
+                              
+                              <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-envelope p-2"></span>
+                                    <input type="text" placeholder="Email" id="email" name="emal" [(ngModel)]="signUpModel.email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input [type]="type" placeholder="Password" id="password" name="password" [(ngModel)]="signUpModel.password" (input)="onPasswordChange($event)">
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                                </div>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input [type]="type" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" [(ngModel)]="signUpModel.confirmPassword" (input)="onConfirmPasswordChange($event)">
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="error-pwd" *ngIf="errorMessage"> {{errorMessage}}</span>
+                                    <span class="error-pwd" 
+                                        [ngClass]="pwdStrength == 'Strong'? 'pwd-strong': 'pwd-good'"
+                                        *ngIf="pwdStrength"> 
+                                        <span *ngIf="pwdStrength == 'Strong'">Password is Strong.</span>
+                                        <span *ngIf="pwdStrength == 'Good'">Password is Good.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="onSignupClick()" [disabled]="!signUpForm.valid">Sign up</button>
+                            <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/login">Login</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
